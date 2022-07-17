@@ -23,4 +23,19 @@ app.post('/', async (req, res)=>{
     res.send(result); 
 })
 
+// ******** Put method *********
+
+// check how to change /update data from (query parameters)
+// like:   app.get('/:name') ????
+
+app.put("/", async (req, res)=>{
+    let data = await dbConnect();
+    let result = data.updateOne(
+        {name: "realme xx"}, {$set: req.body}
+        );
+
+    console.log(req.body);
+    res.send({result: "update"});
+})
+
 app.listen(5000);
